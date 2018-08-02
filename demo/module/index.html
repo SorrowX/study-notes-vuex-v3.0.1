@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>vuex</title>
+</head>
+<body>
+	<div id="app"></div>
+    <script src="../../dist/vue.js"></script>
+    <script src="../../dist/vuex.js"></script>
+    <script>
+    	const moduleA = {
+    		namespaced: true,
+    		state: {
+    			count: 2
+    		},
+    		mutations: {
+    			increment(state) {
+    				state.count++
+    			}
+    		},
+    		actions: {
+    			increment(context) {
+    				context.commit('increment')
+    			}
+    		},
+    		getters: {
+    			computedCount(state) {
+    				return state.count + 1
+    			}
+    		}
+    	}
+
+    	const moduleB = {
+    		namespaced: true,
+    		state: {
+    			count: 3
+    		},
+    		mutations: {
+    			increment(state) {
+    				state.count++
+    			}
+    		},
+    		actions: {
+    			increment(context) {
+    				context.commit('increment')
+    			}
+    		},
+    		getters: {
+    			computedCount(state) {
+    				return state.count + 1
+    			}
+    		}
+    	}
+
+    	const store = new Vuex.Store({
+    		modules: {
+    			a: moduleA,
+    			b: moduleB
+    		},
+    		state: {
+    			count: 1
+    		},
+            mutations: {
+                increment(state) {
+                    state.count++
+                }
+            },
+            actions: {
+                increment(context) {
+                    context.commit('increment')
+                }
+            },
+            getters: {
+                computedCount(state) {
+                    return state.count + 1
+                }
+            }
+    	})
+
+    	console.log(store)
+
+    	const app = new Vue({
+    		store
+    	}).$mount('#app')
+
+    </script>
+</body>
+</html>
