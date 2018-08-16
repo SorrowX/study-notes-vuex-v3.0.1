@@ -4,10 +4,13 @@
 	<title>vuex</title>
 </head>
 <body>
-	<div id="app"></div>
+	<div id="app">
+        {{ count }}   
+    </div>
     <script src="../../dist/vue.js"></script>
     <script src="../../dist/vuex.js"></script>
     <script>
+
     	const moduleA = {
     		namespaced: true,
     		state: {
@@ -80,7 +83,18 @@
     	console.log(store)
 
     	const app = new Vue({
-    		store
+    		store,
+            /*computed: Object.assign({}, Vuex.mapState([
+                'count'
+            ])),*/
+            computed: {
+                count () {
+                    return this.$store.state.count
+                }
+            },
+            methods: Vuex.mapMutations({
+                add: 'increment'
+            })
     	}).$mount('#app')
 
     </script>
