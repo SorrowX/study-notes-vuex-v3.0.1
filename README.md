@@ -29,3 +29,4 @@ $ npm run dev # serve examples at localhost:8080
 [MIT](http://opensource.org/licenses/MIT)
 # study-notes-vuex-v3.0.1
 # study-notes-vuex-v3.0.1
+# study-notes-vuex-v3.0.1
